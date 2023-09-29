@@ -1,0 +1,49 @@
+﻿@model MyNotes.ViewModels.RegisterViewModel
+
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row">
+    <div class="col-8 mx-auto">
+        <h1 class="mt-2">Registration</h1>
+        <hr />
+        <form asp-action="Register" asp-controller="Account" method="post">
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div>
+                        <label asp-for="Firstname"></label>
+                        <input type="text" asp-for="Firstname" class="form-control" >
+                        <span class="text-danger" asp-validation-for="Firstname"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <label asp-for="Lastname"></label>
+                        <input type="text" asp-for="Lastname" class="form-control">
+                        <span class="text-danger" asp-validation-for="Lastname"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email"></label>
+                <input type="email" asp-for="Email" class="form-control">
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password"></label>
+                <input type="password" asp-for="Password" class="form-control">
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Confirmpassword"></label>
+                <input type="password" asp-for="Confirmpassword" class="form-control">
+                <span class="text-danger" asp-validation-for="Confirmpassword"></span>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="form-control btn-success" value="Register" >
+            </div>
+        </form>
+    </div>
+</div>

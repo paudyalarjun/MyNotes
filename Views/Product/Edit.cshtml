@@ -1,0 +1,44 @@
+﻿@model MyNotes.ViewModels.ProductViewModel
+
+
+@{
+    ViewData["Title"] = "Edit Products";
+}
+
+
+<div class="row">
+    <div class="col-8 mx-auto">
+
+        <div class="row d-flex">
+            <div class="col-10"><h1 class="mt-2">Edit Products</h1></div>
+            <div class="col-2" <a asp-action="index" class="btn btn-success form-control">Back To Index</a></div>
+        </div>
+        <hr />
+        <form asp-action="Edit" asp-controller="Product" method="post">
+            <input type="hidden" asp-for="ID" />
+            <input type="hidden" asp-for="AddedDate" />
+            <input type="hidden" asp-for="IsActive" />
+
+            <div class="mb-3">
+                <label asp-for="ProductName"></label>
+                <input type="text" asp-for="ProductName" class="form-control">
+                <span class="text-danger" asp-validation-for="ProductName"> </span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ProductCode"></label>
+                <input asp-for="ProductCode" class="form-control" />
+                <span class="text-danger" asp-validation-for="ProductCode"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Unit"></label>
+                <input class="form-control" asp-for="Unit">
+                <span class="text-danger" asp-validation-for="Unit"></span>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="form-control btn btn-success" value="Save">
+            </div>
+        </form>
+    </div>
+</div>
+
+

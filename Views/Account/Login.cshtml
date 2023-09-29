@@ -1,0 +1,36 @@
+﻿@model MyNotes.ViewModels.LoginViewModel
+
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row">
+    <div class="col-8 mx-auto">
+        <h1 class="mt-2">Login</h1>
+        <hr />
+        <form asp-action="Login" asp-controller="Account" method="post">
+            <div class="mb-3">
+                <label asp-for="Username"></label>
+                <input type="text" asp-for="Username" class="form-control">
+                <span class="text-danger" asp-validation-for="Username"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password"></label>
+                <input type="password" asp-for="Password" class="form-control">
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+            <div class="mb-3">
+                <input type="checkbox" asp-for="Rememberme">
+                <label asp-for="Rememberme"></label>
+                <span class="text-danger" asp-validation-for="Rememberme"></span>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="form-control btn btn-success" value="Login">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

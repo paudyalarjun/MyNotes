@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Note>
+
+
+@{
+    ViewData["Title"] = "Posts";
+    
+}
+
+
+<div class="row">
+    <div class="col-12 mx-auto">
+        <div class="row d-flex">
+            <div class="col-10"><h1 class="mt-2">List of Posts</h1></div>
+            <div class="col-2"><a asp-action="create" class="btn btn-success form-control">Create Note</a></div>
+        </div>
+        
+        <hr />
+
+        @if(Model.Count()>0)
+        {
+            <div class="row">
+
+                @foreach (var note in Model.OrderByDescending(x => x.CreatedDate))
+                {
+                    <div class="col-4">
+                        <div class="p-3 tet-white rounded-2 my-2" style="background-color: @note.Color;">
+                            <h2>@note.Title</h2>
+                            <hr>
+                            <p>@note.Description</p>
+                            <div class="top-btns">
+                                <a asp-action="Edit" asp-route-id="@note.ID" style="color:white; padding: 3px; margin: 2px; border-radius: 30%; background-color:black;"><i class="bi bi-pencil-square"></i></a>
+                                <a asp-action="Delete" asp-route-id="@note.ID" style="color:white; padding: 3px; margin: 2px; border-radius: 30%; background-color:black;"><i class="bi bi-trash-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>You have not written any Notes to display. </p>
+        }
+
+    </div>
+</div>
+
+

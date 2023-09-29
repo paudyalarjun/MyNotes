@@ -1,0 +1,40 @@
+﻿@model MyNotes.ViewModels.ProductViewModel
+
+
+@{
+    ViewData["Title"] = "Place your Order:";
+}
+
+
+<div class="row">
+    <div class="col-8 mx-auto">
+        <div class="row d-flex">
+            <div class="col-10"><h1 class="mt-2">Create a Product Profile</h1></div>
+            <div class="col-2"><a asp-action="index" class="btn btn-success form-control">Go Back</a></div>
+        </div>
+        <hr />
+        <form asp-action="Create" asp-controller="Product" method="post">
+            <div class="mb-3">
+                <label asp-for="ProductName"></label>
+                <input type="text" asp-for="ProductName" class="form-control">
+                <span class="text-danger" asp-validation-for="ProductName"> </span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ProductCode"></label>
+                <input asp-for="ProductCode" class="form-control" />
+                <span class="text-danger" asp-validation-for="ProductCode"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Unit"></label>
+                <input class="form-control" asp-for="Unit" value="0.00">
+                <span class="text-danger" asp-validation-for="Unit"></span>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="form-control btn btn-success" value="Save">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
