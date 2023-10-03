@@ -1,13 +1,12 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyNotes.ViewModels
 {
-    public class StudentViewModel
+    public class TeacherViewModel
     {
         public int ID { get; set; }
         [Required]
-        [DisplayName("Full Name:")]
         public string? Name { get; set; }
         [Required]
         public string? Email { get; set; }
@@ -15,16 +14,13 @@ namespace MyNotes.ViewModels
         public string? Address { get; set; }
         [Required]
         public string? Gender { get; set; }
-        [Required]
-        public string? Degree { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+
+        public int TeacherID { get; set; }
+        public int DepartmentID { get; set; }
 
 
 
-
-        public int StudentID { get; set; }
-        public int LectureID { get; set; }
+        //public int DepartmentId {get; set; }
+        //public SelectList Departments { get; set; }
     }
 }
-
-

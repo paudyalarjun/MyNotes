@@ -1,0 +1,36 @@
+﻿@model List<Student>
+
+
+@{
+    ViewData["Title"] = "Students List";
+}
+
+<div class="row">
+    <div class="col-10"><h1 class="col-10">List of Students:</h1></div>
+    <div class="col-2"><a asp-action="create" class="btn btn-success form-control">Create Profile</a></div>
+</div>
+<hr />
+
+
+<div>
+    <div class="row col-12 mx-auto">
+        @foreach (var student in Model.OrderByDescending(x => x.CreatedDate))
+        {
+            <div class="col-4 m-1" style="background-color: #BADBED; border-radius: 10%">
+                <div class="p-3 tet-white rounded-2 my-2">
+                    <h4>Full Name: @student.Name</h4>
+                    <h4>Email: @student.Email</h4>
+                    <h4>Address: @student.Address</h4>
+                    <h4>Degree: @student.Degree</h4>
+                    <h4>Gender: @student.Gender</h4>
+                    <div>
+                        <a asp-action="Edit" asp-route-id="@student.ID" style="color:white; text-decoration: none; padding: 3px; margin: 2px; background-color:black;">Edit</a>  @* //<i class="bi bi-pencil-square"></i>    <i class="bi bi-trash-fill"></i> *@
+                        <a asp-action="Delete" asp-route-id="@student.ID" style="color:white; text-decoration: none; padding: 3px; margin: 2px; background-color:black;">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

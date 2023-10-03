@@ -59,11 +59,14 @@ namespace MyNotes.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.Rememberme, false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction(nameof(Index), "Home");
+                    return RedirectToAction("Index", "Home");
                 }
             }
             return View(model);
         }
+
+
+
 
         [HttpPost]
         public async Task<IActionResult> Logout()

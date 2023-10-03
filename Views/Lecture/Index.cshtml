@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Lecture>
+
+
+@{
+    ViewData["Title"] = "Lectures" ;
+}
+
+<div>
+    <div>
+        <h1 ><a asp-action="create" asp-controller="Lecture" >Create</a></h1>
+    </div>
+    <hr />
+    <div class="row">
+        @foreach ( var lec in Model )
+        {
+            <div class="m-2 p-1 col-3" style="background-color: #FACBED;">
+                <p>@lec.Name</p>
+            
+                <div class="top-btns">
+                    <a asp-action="Edit" asp-route-id="@lec.ID" style="color:white; padding: 3px; margin: 2px; border-radius: 30%; background-color:black;"><i class="bi bi-pencil-square"></i></a>
+                    <a asp-action="Delete" asp-route-id="@lec.ID" style="color:white; padding: 3px; margin: 2px; border-radius: 30%; background-color:black;"><i class="bi bi-trash-fill"></i></a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

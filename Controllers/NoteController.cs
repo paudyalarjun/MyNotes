@@ -78,6 +78,9 @@ namespace MyNotes.Controllers
             return View(model);
         }
 
+
+
+
         //Edit Post
 
         [HttpPost]

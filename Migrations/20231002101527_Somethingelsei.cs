@@ -5,7 +5,7 @@
 namespace MyNotes.Migrations
 {
     /// <inheritdoc />
-    public partial class h : Migration
+    public partial class Somethingelsei : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

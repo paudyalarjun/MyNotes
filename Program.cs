@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 //using MyNotes.Core.Configuration;
 using MyNotes.Data;
 using MyNotes.Models;
+using MyNotes.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,7 @@ builder.Services.AddControllersWithViews();
 //    options.LoginPath = "/Login";
 //});
 
-// builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+ builder.Services.AddSingleton<ITeacherService, TeacherService>();
 
 var app = builder.Build();
 

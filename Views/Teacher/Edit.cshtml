@@ -1,0 +1,49 @@
+﻿@model MyNotes.ViewModels.TeacherViewModel
+
+
+@{
+    ViewData["Title"] = "Edit Teacher Profile";
+}
+
+
+
+<div>
+    <div>
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4"></div>
+        </div>
+
+        <form asp-action="Edit" asp-controller="Teacher" method="post" >
+            <input type="hidden" asp-for="ID" />
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div>
+                <label asp-for="Email"></label>
+                <input asp-for="Email" />
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div>
+                <label asp-for="Address"></label>
+                <input asp-for="Address" />
+                <span asp-validation-for="Address"></span>
+            </div>
+            <div>
+                <label asp-for="Gender"></label>
+                <select asp-for="Gender" >
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+                <span asp-validation-for="Gender"></span>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="form-control btn btn-success" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<TeacherDepartment>
+
+
+
+@{
+    ViewData["Title"] = "TeacherDepartment Page";
+}
+
+
+<div>
+    <div>
+        <h1><a asp-action="create" asp-controller="TeacherDepartment">Create</a></h1>
+    </div>
+    <hr />
+    <div class="row">
+        @foreach (var x in Model)
+        {
+            <div class="col-3 m-2 p-3" style="background-color: wheat; border-radius: 5%;">
+                <h3>Teacher: @x.DepartmentName </h3>
+                <h3>Department: @x.TeacherName </h3>
+                <div class="top-btns">
+                    <a asp-action="Edit" asp-route-id="@x.ID" style="color:white; padding: 3px; margin: 2px; border-radius: 30%; background-color:black;"><i class="bi bi-pencil-square"></i></a>
+                    <a asp-action="Delete" asp-route-id="@x.ID" style="color:white; padding: 3px; margin: 2px; border-radius: 30%; background-color:black;"><i class="bi bi-trash-fill"></i></a>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+

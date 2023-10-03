@@ -1,0 +1,29 @@
+﻿@model MyNotes.ViewModels.DepartmentViewModel
+
+
+@{
+    ViewData["Title"] = "Create new Department Class";
+}
+
+
+
+<div>
+    <div>
+        <div> <h1>Create a New Department: </h1> </div>
+        <form asp-action="Create" asp-controller="Department" method="post">
+            <div>
+                <label asp-for="Name"></label>
+                <select asp-for="Name">
+                    <option value="IT">IT</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Management">Management</option>
+                </select>
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div>
+                <input type="submit" class="form-control btn btn-success" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>

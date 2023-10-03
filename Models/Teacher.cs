@@ -1,17 +1,21 @@
-﻿namespace MyNotes.Models
+﻿using System.Reflection;
+
+namespace MyNotes.Models
 {
-    public class Student
+    public class Teacher
     {
         public int ID { get; set; }
         public string? Name { get; set; }
         public string? Email { get; set; }
         public string? Address { get; set; }
         public string? Gender { get; set; }
-        public string? Degree { get; set; }
-        public DateTime CreatedDate { get; set; }
+
+        
 
 
 
-        public int LectureID { get; set; }
+        public int DepartmentId { get; set; }
+        //public Department? Department { get; set; }
+
     }
 }

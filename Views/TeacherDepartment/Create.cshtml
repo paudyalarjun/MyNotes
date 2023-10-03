@@ -1,0 +1,34 @@
+﻿@model MyNotes.ViewModels.TeacherDepartmentViewModel;
+
+
+@{
+    ViewData["Title"] = "Create TeacherDepartment Connection";
+}
+
+
+
+<div>
+    <div>
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4"></div>
+        </div>
+
+        <form asp-action="create" asp-controller="TeacherDepartment" method="post">
+            
+            <div class="form-group">
+                <label for="TeacherID">Teacher:</label>
+                @Html.DropDownListFor(model => model.TeacherID, ViewBag.TeacherList as SelectList, "Select Teacher", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="DepartmentID">Department:</label>
+                @Html.DropDownListFor(model => model.DepartmentID, ViewBag.DepartmentList as SelectList, "Select Department", new { @class = "form-control" })
+            </div>
+
+
+            <div class="mb-3">
+                <input type="submit" class="form-control btn btn-success" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>
