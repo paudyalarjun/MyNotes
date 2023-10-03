@@ -13,6 +13,7 @@ public class ApplicationDbContext : IdentityDbContext<User>
     public DbSet<Teacher>? Teachers { get; set; }
     public DbSet<Lecture>? Lectures { get; set; }
     public DbSet<TeacherDepartment>? TeacherDepartments { get; set; }
+    public DbSet<StudentLecture>? StudentLectures { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)

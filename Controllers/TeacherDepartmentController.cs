@@ -70,20 +70,27 @@ namespace MyNotes.Controllers
         }
 
 
+
+
+
         public IActionResult Edit(int ID)
         {
+            ViewBag.TeacherList = new SelectList(_context.Teachers, "ID", "Name");
+            ViewBag.DepartmentList = new SelectList(_context.Departments, "ID", "Name");
+
             var teacherDepartment = _context.TeacherDepartments.FirstOrDefault(x => x.ID == ID);
-            var model = new TeacherDepartment()
-            {
-                ID = teacherDepartment.ID,
-                TeacherID = teacherDepartment.TeacherID,
-                DepartmentID = teacherDepartment.DepartmentID,
-            };
+            //var model = new TeacherDepartment()
+            //{
+            //    ID = teacherDepartment.ID,
+            //    TeacherID = teacherDepartment.TeacherID,
+            //    DepartmentID = teacherDepartment.DepartmentID,
+            //};
 
 
-            return View(model);
+            return View(teacherDepartment);
 
         }
+
 
         [HttpPost]
         public IActionResult Edit(TeacherDepartmentViewModel model) {
@@ -105,6 +112,9 @@ namespace MyNotes.Controllers
             ViewBag.DepartmentList = new SelectList(_context.Departments, "ID", "Name");
             return View(model);
         }
+
+
+
 
 
 

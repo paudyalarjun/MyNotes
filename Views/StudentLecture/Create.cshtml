@@ -1,0 +1,34 @@
+﻿@model MyNotes.ViewModels.StudentLectureViewModel;
+
+
+@{
+    ViewData["Title"] = "Create StudentLecture Connection";
+}
+
+
+
+<div>
+    <div>
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4"></div>
+        </div>
+
+        <form asp-action="create" asp-controller="StudentLecture" method="post">
+
+            <div class="form-group">
+                <label for="StudentID">Student:</label>
+                @Html.DropDownListFor(model => model.StudentID, ViewBag.StudentList as SelectList, "Select Student", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="LectureID">Lecture:</label>
+                @Html.DropDownListFor(model => model.LectureID, ViewBag.LectureList as SelectList, "Select Lecture", new { @class = "form-control" })
+            </div>
+
+
+            <div class="mb-3">
+                <input type="submit" class="form-control btn btn-success" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -16,10 +16,13 @@ namespace MyNotes.Services
         }
 
 
+
+
+
         public List<TeacherDepartmentViewModel> GetTeacherDepartmentInfo()
         {
             List<TeacherDepartmentViewModel> list = new List<TeacherDepartmentViewModel>();
-            var conn = _configuration.GetConnectionString("DefaultConnection") ;
+            var conn = _configuration.GetConnectionString("DefaultConnection");
             using (SqlConnection connection = new SqlConnection(conn))
             {
                 connection.Open();
@@ -44,5 +47,34 @@ namespace MyNotes.Services
             return list;
         }
 
+
+        public List<StudentLectureViewModel> GetStudentLectureInfo()
+        {
+            List<StudentLectureViewModel> list = new List<StudentLectureViewModel>();
+            var conn = _configuration.GetConnectionString("DefaultConnection");
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetAllLectures", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        StudentLectureViewModel viewModel = new StudentLectureViewModel();
+                        viewModel.ID = (Convert.ToInt32(reader.GetValue(0)));
+                        viewModel.StudentID = Convert.ToInt32(reader.GetValue(1));
+                        viewModel.LectureID = Convert.ToInt32(reader.GetValue(2));
+                        viewModel.StudentName = Convert.ToString(reader.GetValue(3));
+                        viewModel.LectureName = Convert.ToString(reader.GetValue(4));
+                        list.Add(viewModel);
+                    }
+                }
+                command.Dispose();
+
+            }
+            return list;
+
+        }
     }
 }

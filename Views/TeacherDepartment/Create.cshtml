@@ -17,7 +17,7 @@
         <form asp-action="create" asp-controller="TeacherDepartment" method="post">
             
             <div class="form-group">
-                <label for="TeacherID">Teacher:</label>
+                <label asp-for="TeacherID">Teacher:</label>
                 @Html.DropDownListFor(model => model.TeacherID, ViewBag.TeacherList as SelectList, "Select Teacher", new { @class = "form-control" })
             </div>
             <div class="form-group">
