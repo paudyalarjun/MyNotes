@@ -42,7 +42,6 @@ namespace MyNotes.Controllers
                     Email = model.Email,
                     Address = model.Address,
                     Gender = model.Gender,
-                    Degree  = model.Degree,
                 };
                 _context.Students.Add(student);
                 _context.SaveChanges();
@@ -69,7 +68,6 @@ namespace MyNotes.Controllers
                 Email = student.Email,
                 Address = student.Address,
                 Gender = student.Gender,
-                Degree = student.Degree,
                 CreatedDate = student.CreatedDate
 
 
@@ -93,7 +91,6 @@ namespace MyNotes.Controllers
                     Email = model.Email,
                     Address = model.Address,
                     Gender = model.Gender,
-                    Degree = model.Degree,
                     CreatedDate = model.CreatedDate,
                 };
                 _context.Students.Update(student);

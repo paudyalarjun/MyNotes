@@ -15,8 +15,6 @@ namespace MyNotes.ViewModels
         public string? Address { get; set; }
         [Required]
         public string? Gender { get; set; }
-        [Required]
-        public string? Degree { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
 

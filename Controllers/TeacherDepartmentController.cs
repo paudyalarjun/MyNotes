@@ -23,7 +23,7 @@ namespace MyNotes.Controllers
 
         public IActionResult Index()
         {
-            var data = _teacherService.GetTeacherDepartmentInfo();
+            var data = _teacherService.GetTeacherDepartmentFile();
             return View(data);
         }
 
@@ -38,7 +38,7 @@ namespace MyNotes.Controllers
 
             ViewBag.TeacherList = new SelectList(_context.Teachers, "ID", "Name");
             ViewBag.DepartmentList = new SelectList(_context.Departments, "ID", "Name");
-            return View();
+            return View(new TeacherDepartmentViewModel());
 
             //return View(new TeacherViewModel());
         }
@@ -79,12 +79,6 @@ namespace MyNotes.Controllers
             ViewBag.DepartmentList = new SelectList(_context.Departments, "ID", "Name");
 
             var teacherDepartment = _context.TeacherDepartments.FirstOrDefault(x => x.ID == ID);
-            //var model = new TeacherDepartment()
-            //{
-            //    ID = teacherDepartment.ID,
-            //    TeacherID = teacherDepartment.TeacherID,
-            //    DepartmentID = teacherDepartment.DepartmentID,
-            //};
 
 
             return View(teacherDepartment);
