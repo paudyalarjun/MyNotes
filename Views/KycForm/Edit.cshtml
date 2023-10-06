@@ -1,0 +1,78 @@
+﻿@model MyNotes.Models.KycForm
+
+
+@{
+    ViewData["Title"] = "Edit Kyc Form";
+}
+
+
+<div>
+    <div>
+        <div>
+            <form asp-action="Edit" asp-controller="KycForm" method="post" >
+                <div class="mb-3">
+                    <label asp-for="FullName"></label>
+                    <input type="text" asp-for="FullName" class="form-control">
+                    <span class="text-danger" asp-validation-for="FullName"> </span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="PhoneNumber"></label>
+                    <input type="text" asp-for="PhoneNumber" class="form-control">
+                    <span class="text-danger" asp-validation-for="PhoneNumber"> </span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="PermaState"></label>
+                    <input type="text" asp-for="PermaState" class="form-control">
+                    <span class="text-danger" asp-validation-for="PermaState"> </span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="PermaDistrict"></label>
+                    <input type="text" asp-for="PermaDistrict" class="form-control">
+                    <span class="text-danger" asp-validation-for="PermaDistrict"> </span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="PermaMunicipality"></label>
+                    <input type="text" asp-for="PermaMunicipality" class="form-control">
+                    <span class="text-danger" asp-validation-for="PermaMunicipality"> </span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="PermaWard"></label>
+                    <input type="text" asp-for="PermaWard" class="form-control">
+                    <span class="text-danger" asp-validation-for="PermaWard"> </span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="PermaStreet"></label>
+                    <input type="text" asp-for="PermaStreet" class="form-control">
+                    <span class="text-danger" asp-validation-for="PermaStreet"> </span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="TempState"></label>
+                    <input type="text" asp-for="TempState" class="form-control">
+                    <span class="text-danger" asp-validation-for="TempState"> </span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="TempDistrict"></label>
+                    <input type="text" asp-for="TempDistrict" class="form-control">
+                    <span class="text-danger" asp-validation-for="TempDistrict"> </span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="TempMunicipality"></label>
+                    <input type="text" asp-for="TempMunicipality" class="form-control">
+                    <span class="text-danger" asp-validation-for="TempMunicipality"> </span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="TempWard"></label>
+                    <input type="text" asp-for="TempWard" class="form-control">
+                    <span class="text-danger" asp-validation-for="TempWard"> </span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="TempDistrict"></label>
+                    <input type="text" asp-for="TempDistrict" class="form-control">
+                    <span class="text-danger" asp-validation-for="TempDistrict"> </span>
+                </div>
+
+                <input type="submit" class="form-control btn btn-success" value="Save" />
+            </form>
+        </div>
+    </div>
+</div>

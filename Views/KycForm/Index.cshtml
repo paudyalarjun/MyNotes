@@ -1,0 +1,126 @@
+﻿@model IEnumerable<KycForm >
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                S.N.
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermaState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermaDistrict)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermaMunicipality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermaWard)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermaStreet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempDistrict)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempMunicipality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempWard)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempStreet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfileImage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+<script>
+    var addSerialNumber = function () {
+    $('table tr').each(function(index) {
+    $(this).find('td:nth-child(1)').html(index+1);
+    });
+    };
+</script>
+
+
+
+@foreach (var item in Model) {
+        <tr>
+            <td> <script>addSerialNumber();</script></td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermaState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermaDistrict)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermaMunicipality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermaWard)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermaStreet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempDistrict)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempMunicipality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempWard)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempStreet)
+            </td>
+            <td>
+                <img src="~/Images/@item.ProfileImage" width="100" height="100">
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+

@@ -8,7 +8,7 @@ namespace MyNotes.ViewModels
         public string? Username { get; set; }
         [Required]
         public string? Password { get; set; }
-        [Display(Name ="Remember Me")]
+        [Display(Name = "Remember Me")]
         public bool Rememberme { get; set; }
     }
 }

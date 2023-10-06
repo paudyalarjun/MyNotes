@@ -175,6 +175,77 @@ namespace MyNotes.Migrations
                     b.ToTable("Departments");
                 });
 
+            modelBuilder.Entity("MyNotes.Models.District", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Dname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StateId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("District");
+                });
+
+            modelBuilder.Entity("MyNotes.Models.KycForm", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PermaDistrict")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PermaMunicipality")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PermaState")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PermaStreet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PermaWard")
+                        .HasColumnType("int");
+
+                    b.Property<long>("PhoneNumber")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ProfileImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TempDistrict")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TempMunicipality")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TempState")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TempStreet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TempWard")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("KycForms");
+                });
+
             modelBuilder.Entity("MyNotes.Models.Lecture", b =>
                 {
                     b.Property<int>("ID")
@@ -249,6 +320,22 @@ namespace MyNotes.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("MyNotes.Models.State", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Sname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("State");
+                });
+
             modelBuilder.Entity("MyNotes.Models.Student", b =>
                 {
                     b.Property<int>("ID")
@@ -262,9 +349,6 @@ namespace MyNotes.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Degree")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");

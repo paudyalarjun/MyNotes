@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Identity.Client;
 using MyNotes.Data;
 using MyNotes.Models;
 using MyNotes.Services;
@@ -18,6 +19,9 @@ namespace MyNotes.Controllers
             _studentService = studentService;
         }
 
+
+
+
         public IActionResult Index()
         {
             var data = _studentService.GetStudentLectureInfo();
@@ -28,40 +32,104 @@ namespace MyNotes.Controllers
 
 
 
+
         [HttpGet]
-        public ActionResult Create()
+        public IActionResult Create()
         {
             ViewBag.StudentList = new SelectList(_context.Students, "ID", "Name");
             ViewBag.LectureList = new SelectList(_context.Lectures, "ID", "Name");
-            return View();
-
-            //return View(new studentViewModel());
+            return View(new StudentLectureViewModel());
         }
 
 
 
         [HttpPost]
-        public IActionResult Create(StudentLectureViewModel viewModel)   // (studentViewModel model)
-        {
 
+        public IActionResult Create(StudentLectureViewModel model)
+        {
             if (ModelState.IsValid)
             {
-                // Create a studentlecture entry
                 var studentlecture = new StudentLecture()
                 {
+                    StudentID = model.StudentID,
+                    LectureID = model.LectureID,
+                    StudentName = model.StudentName,
+                    LectureName = model.LectureName,
+
+                };
+                _context.StudentLectures.Add(studentlecture);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index), "StudentLecture");
+            }
+            ViewBag.StudentList = new SelectList(_context.Students, "ID", "Name");
+            ViewBag.LectureList = new SelectList(_context.Lectures, "ID", "Name");
+            return View(model);
+        }
+
+
+
+
+
+
+        //[HttpPost]
+        //public IActionResult Create(StudentLectureViewModel viewModel)   // (studentViewModel model)
+        //{
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Create a studentlecture entry
+        //        var studentlecture = new StudentLecture()
+        //        {
+        //            StudentID = viewModel.StudentID,
+        //            LectureID = viewModel.LectureID,
+        //            StudentName = viewModel.StudentName,
+        //            LectureName = viewModel.LectureName,
+        //        };
+
+        //        _context.Add(studentlecture);
+        //        _context.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    ViewBag.studentList = new SelectList(_context.Students, "ID", "Name");
+        //    ViewBag.lectureList = new SelectList(_context.Lectures, "ID", "Name");
+        //    return View(viewModel);
+        //}
+
+
+
+        [HttpGet]
+        public IActionResult Edit(int ID)
+        {
+            ViewBag.StudentList = new SelectList(_context.Students, "ID", "Name");
+            ViewBag.LectureList = new SelectList(_context.Lectures, "ID", "Name");
+            var studentlecture = _context.StudentLectures.FirstOrDefault(x => x.ID == ID);
+
+            return View(studentlecture);
+
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Edit(StudentLectureViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var studentlecture = new StudentLecture()
+                {
+                    ID = viewModel.ID,
                     StudentID = viewModel.StudentID,
                     LectureID = viewModel.LectureID,
                     StudentName = viewModel.StudentName,
                     LectureName = viewModel.LectureName,
                 };
-
-                _context.Add(studentlecture);
+                _context.StudentLectures.Update(studentlecture);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index), "studentlecture");
             }
-
-            ViewBag.studentList = new SelectList(_context.Students, "ID", "Name");
-            ViewBag.lectureList = new SelectList(_context.Lectures, "ID", "Name");
+            ViewBag.StudentList = new SelectList(_context.Students, "ID", "Name");
+            ViewBag.LectureList = new SelectList(_context.Lectures, "ID", "Name");
             return View(viewModel);
         }
 
@@ -69,48 +137,36 @@ namespace MyNotes.Controllers
 
 
 
-        [HttpGet]
-        public IActionResult Edit(int ID)
+
+
+
+
+        //[HttpPost]
+        //public IActionResult Edit(StudentLectureViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var studentLecture = new StudentLecture()
+        //        {
+        //            ID = model.ID,
+        //            StudentID = model.StudentID,
+        //            LectureID = model.LectureID,
+        //            StudentName = model.StudentName,
+        //            LectureName = model.LectureName,
+        //        };
+
+        //        _context.StudentLectures.Update(studentLecture);
+        //        _context.SaveChanges();
+        //        return RedirectToAction(nameof(Index), "StudentLecture");
+        //    }
+        //return View(model);
+        //}
+
+
+        public IActionResult DeletionSuccessful()
         {
-
-            ViewBag.StudentList = new SelectList(_context.Students, "ID", "Name");
-            ViewBag.LectureList = new SelectList(_context.Lectures, "ID", "Name");
-            var studentLecture = _context.StudentLectures.FirstOrDefault(x => x.ID == ID);
-            //var model = new StudentLectureViewModel()
-            //{
-            //    ID = studentLecture.ID,
-            //    StudentID = studentLecture.StudentID,
-            //    LectureID = studentLecture.LectureID,
-            //    StudentName = studentLecture.StudentName,
-            //    LectureName = studentLecture.LectureName,
-            //};
-
-            return View(studentLecture);
+            return View();
         }
-
-
-        [HttpPost]
-        public IActionResult Edit(StudentLectureViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var studentLecture = new StudentLecture()
-                {
-                    ID = model.ID,
-                    StudentID = model.StudentID,
-                    LectureID = model.LectureID,
-                    StudentName = model.StudentName,
-                    LectureName = model.LectureName,
-                };
-
-                _context.StudentLectures.Update(studentLecture);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index), "StudentLecture");
-            }
-        return View(model);
-        }
-
-
 
 
         public IActionResult Delete(int ID)
@@ -119,11 +175,36 @@ namespace MyNotes.Controllers
             {
                 return Content("Error");
             }
-            var studentLecture = _context.StudentLectures.FirstOrDefault(x => x.ID == ID);
-            _context.StudentLectures.Remove(studentLecture);
+            var student = _context.StudentLectures.FirstOrDefault(x => x.ID == ID);
+            _context.StudentLectures.Remove(student);
             _context.SaveChanges();
-            return RedirectToAction(nameof(Index), "StudentLecture");
+            
+
+            return RedirectToAction("DeletionSuccessful", "StudentLecture");
+
+
         }
+
+
+
+
+
+
+
+
+
+
+        //public IActionResult Delete(int ID)
+        //{
+        //    if (ID  == 0)
+        //    {
+        //        return Content("Error");
+        //    }
+        //    var studentLecture = _context.StudentLectures.FirstOrDefault(x => x.ID == ID);
+        //    _context.StudentLectures.Remove(studentLecture);
+        //    _context.SaveChanges();
+        //    return RedirectToAction(nameof(Index), "StudentLecture");
+        //}
 
 
     }

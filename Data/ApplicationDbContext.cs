@@ -14,6 +14,9 @@ public class ApplicationDbContext : IdentityDbContext<User>
     public DbSet<Lecture>? Lectures { get; set; }
     public DbSet<TeacherDepartment>? TeacherDepartments { get; set; }
     public DbSet<StudentLecture>? StudentLectures { get; set; }
+    public DbSet<KycForm>? KycForms { get; set; }
+    public DbSet<State>? State { get; set; }
+    public DbSet<District>? District { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
