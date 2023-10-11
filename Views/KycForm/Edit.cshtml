@@ -118,30 +118,6 @@
 <script>
     $(document).ready(function () {
 
-        // $(".state").change(function () {
-        //     debugger;
-        //     var stateid = $(this).val();
-        //     ajax({
-        //         url: '/kycform/getdistricts?stateid=' + stateid,
-        //         success: function (response) {
-        //             debugger;
-        //             if (response == 200) {
-        //                 $(".district").html('');
-        //                 var html = "";
-        //                 $('#district').append('<option>--select district--</option>');
-        //                 $.each(response, function (i, data) {
-        //                    html+='<option value=' + data.id + '>' + data.name + '</option>';
-        //                 });
-        //                 $(".district").append(html);
-        //         },
-        //         error: function (error) {
-        //             alert(error);
-        //         }
-        //     })
-        // });
-
-
-
 
 
         $("select.state").change(function () {
@@ -158,7 +134,7 @@
                     $.each(data, function (index, item) {
                         options += '<option value="' + item.districtId + '">' + item.name + "</option>";
                     });
-                    $("select.district").html(options).selectpicker("refresh");
+                    $("select.district").html(options);
                 },
             });
         });
@@ -179,7 +155,7 @@
                     $.each(data, function (index, item) {
                         options += '<option value="' + item.districtId + '">' + item.name + "</option>";
                     });
-                    $("select.tdistrict").html(options).selectpicker("refresh");
+                    $("select.tdistrict").html(options);
                 },
             });
         });
@@ -233,13 +209,13 @@
 
             if ($(this).is(':checked')) {
                 // Checkbox is checked, make the fields read-only
-                $('#tstate, #tdistrict').prop('disabled', true);
-                $('#tmunicipality, #tward, #tstreet').prop('readonly', true);
+                $('#tstate, #tdistrict').attr('readonly', true);
+                $('#tmunicipality, #tward, #tstreet').attr('readonly', true);
 
             } else {
                 // Checkbox is unchecked, make the fields editable
-                $('#tstate, #tdistrict').prop('disabled', false);
-                $('#tmunicipality, #tward, #tstreet').prop('readonly', false);
+                $('#tstate, #tdistrict').attr('readonly', false);
+                $('#tmunicipality, #tward, #tstreet').attr('readonly', false);
             }
 
 

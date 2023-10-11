@@ -12,37 +12,6 @@
 </div>
 
 
-@* 
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>State</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var task in Model)
-        {
-            <tr>
-                <td>@task.ID</td>
-                <td>@task.FullName</td>
-                <td>@task.PState</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@task.ID">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@task.ID">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
- *@
-
-
-
-
 
 <table class="table" id="myTable">
     <thead>
@@ -142,7 +111,7 @@
                 @Html.DisplayFor(model => item.TempStreet)
             </td>
             <td>
-                <img src="~/Images/@item.ProfileImage" width="100" height="100">
+                <img src="~/Images/@item.ProfileImage" width="100" height="100" />
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

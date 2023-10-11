@@ -69,6 +69,23 @@ namespace MyNotes.Controllers
 
 
 
+
+//public IActionResult Create(KycFormViewModel model)
+//{
+//    string stringFileName = UploadFile(model);
+//    if (ModelState.IsValid)
+//    {
+//        _context.KycForms.Add(model);
+//        _context.SaveChanges();
+//        return RedirectToAction(nameof(Index), "KycForm");
+//    }
+
+//    ViewBag.StateList = new SelectList(_context.State, "StateId", "Name");
+//    ViewBag.DistrictList = new SelectList(_context.District, "DistrictId", "Name");
+//    return View(model);
+//}
+
+
         [HttpPost]
         public IActionResult Create(KycFormViewModel model)
         {
@@ -86,7 +103,7 @@ namespace MyNotes.Controllers
                     PermaWard = model.PermaWard,
                     PermaStreet = model.PermaStreet,
                     TempState = model.TState,
-                    TempDistrict = model.TDistrict,
+                    TempDistrict = model.TempDistrict,
                     TempMunicipality = model.TempMunicipality,
                     TempWard = model.TempWard,
                     TempStreet = model.TempStreet,
