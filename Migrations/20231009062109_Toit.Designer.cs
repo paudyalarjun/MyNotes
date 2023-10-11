@@ -12,8 +12,8 @@ using MyNotes.Data;
 namespace MyNotes.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231006061950_Helloo")]
-    partial class Helloo
+    [Migration("20231009062109_Toit")]
+    partial class Toit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -180,19 +180,19 @@ namespace MyNotes.Migrations
 
             modelBuilder.Entity("MyNotes.Models.District", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("DistrictId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DistrictId"));
 
-                    b.Property<string>("Dname")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("StateId")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("DistrictId");
 
                     b.ToTable("District");
                 });
@@ -205,17 +205,20 @@ namespace MyNotes.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<int>("DistrictId")
+                        .HasColumnType("int");
+
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PermaDistrict")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("PermaDistrict")
+                        .HasColumnType("int");
 
                     b.Property<string>("PermaMunicipality")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PermaState")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("PermaState")
+                        .HasColumnType("int");
 
                     b.Property<string>("PermaStreet")
                         .HasColumnType("nvarchar(max)");
@@ -228,6 +231,9 @@ namespace MyNotes.Migrations
 
                     b.Property<string>("ProfileImage")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StateId")
+                        .HasColumnType("int");
 
                     b.Property<string>("TempDistrict")
                         .HasColumnType("nvarchar(max)");
@@ -325,16 +331,19 @@ namespace MyNotes.Migrations
 
             modelBuilder.Entity("MyNotes.Models.State", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("StateId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StateId"));
 
-                    b.Property<string>("Sname")
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("StateId");
 
                     b.ToTable("State");
                 });

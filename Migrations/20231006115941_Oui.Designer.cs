@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyNotes.Data;
 
@@ -11,9 +12,11 @@ using MyNotes.Data;
 namespace MyNotes.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231006115941_Oui")]
+    partial class Oui
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,14 +211,14 @@ namespace MyNotes.Migrations
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PermaDistrict")
-                        .HasColumnType("int");
+                    b.Property<string>("PermaDistrict")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PermaMunicipality")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PermaState")
-                        .HasColumnType("int");
+                    b.Property<string>("PermaState")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PermaStreet")
                         .HasColumnType("nvarchar(max)");

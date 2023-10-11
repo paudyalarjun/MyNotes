@@ -3,10 +3,12 @@ using MyNotes.Models;
 
 namespace MyNotes.ViewModels
 {
-    public class Startup
+    public class DistrictViewModel
     {
-        public string? Dname { get; set; }
+        public int DistrictId { get; set; }
+        public string? Name { get; set; }
 
         public int StateId { get; set; }
+
     }
 }

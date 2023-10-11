@@ -18,6 +18,51 @@ namespace MyNotes.Services
 
 
 
+        public List<KycFormViewModel> GetStateDistrictName()
+        {
+            List<KycFormViewModel> list = new List<KycFormViewModel>();
+
+            var con = _configuration.GetConnectionString("DefaultConnection");
+            using (SqlConnection connection = new SqlConnection(con))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("GetStateNames", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        KycFormViewModel viewModel = new KycFormViewModel();
+                        viewModel.ID = Convert.ToInt32(reader.GetValue(0));
+                        viewModel.FullName = Convert.ToString(reader.GetValue(1));
+                        viewModel.PhoneNumber = Convert.ToInt64(reader.GetValue(2));
+                        viewModel.PermaMunicipality = Convert.ToString(reader.GetValue(5));
+                        viewModel.PermaWard = Convert.ToInt16(reader.GetValue(6));
+                        viewModel.PermaStreet = Convert.ToString(reader.GetValue(7));
+                        viewModel.TempState = Convert.ToString(reader.GetValue(8));
+                        viewModel.TempDistrict = Convert.ToString(reader.GetValue(9));
+                        viewModel.TempMunicipality = Convert.ToString(reader.GetValue(10));
+                        viewModel.TempWard = Convert.ToInt16(reader.GetValue(11));
+                        viewModel.TempStreet = Convert.ToString(reader.GetValue(12));
+                        viewModel.ProfileImage = Convert.ToString(reader.GetValue(13));
+                        viewModel.PState = Convert.ToString(reader.GetValue(16));
+                        viewModel.PDistrict = Convert.ToString(reader.GetValue(17));
+                        list.Add(viewModel);
+                    }
+                }
+                cmd.Dispose();
+            }
+            return list;
+        }
+
+
+
+
+
+
+
+
+
 
 
         public List<TeacherDepartmentViewModel> GetTeacherDepartmentFile()

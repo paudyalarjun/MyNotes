@@ -6,5 +6,6 @@ namespace MyNotes.Services
     {
         List<TeacherDepartmentViewModel> GetTeacherDepartmentFile();
         List<StudentLectureViewModel> GetStudentLectureInfo();
+        List<KycFormViewModel> GetStateDistrictName();
     }
 }

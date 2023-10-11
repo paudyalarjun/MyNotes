@@ -5,8 +5,8 @@ namespace MyNotes.Models
 {
     public class District
     {
-        public int ID { get; set; }
-        public string? Dname { get; set; }
+        public int DistrictId { get; set; }
+        public string? Name { get; set; }
         public int StateId { get; set; } 
     }
 }

@@ -27,34 +27,37 @@
                     <div class="row">
                         <div class="col-5">
                             <label asp-for="PermaState"></label>
-                            <select id="state" class="form-control"></select>
-                            @* <input type="text" asp-for="PermaState" class="form-control"> *@
-                            @* <span class="text-danger" asp-validation-for="PermaState"> </span> *@
+                            @Html.DropDownListFor(model => model.PermaState, ViewBag.StateList as SelectList, "<-- Select State -->", new { @class = "form-control state", @id="state"})
+                            @* <select id="state" class="form-control state"></select>
+                            <input type="text" asp-for="PermaState" class="form-control">
+                            <span class="text-danger" asp-validation-for="PermaState"> </span> *@
                         </div>
                         <div class="col-5">
                             <label asp-for="PermaDistrict"></label>
-                            <select id="district" class="form-control"></select>
-                            @* <input type="text" asp-for="PermaDistrict" class="form-control"> *@
-                            @* <span class="text-danger" asp-validation-for="PermaDistrict"> </span> *@
+                            @* <select id="district" class="form-control"></select> *@
+                            @Html.DropDownListFor(model => model.PermaDistrict, ViewBag.DistrictList as SelectList, "<-- Select District -->", new { @class = "form-control district", @id= "district"}  )
+
+                            @* <input type="text" asp-for="PermaDistrict" class="form-control">
+                            <span class="text-danger" asp-validation-for="PermaDistrict"> </span> *@
                         </div>
                         <div class="col-5">
-                            <label asp-for="PermaMunicipality"></label>
-                            <input type="text" asp-for="PermaMunicipality" class="form-control">
+                            <label asp-for="PermaMunicipality" ></label>
+                            <input type="text" asp-for="PermaMunicipality" class="form-control municipality " id="municipality">
                             <span class="text-danger" asp-validation-for="PermaMunicipality"> </span>
                         </div>
                         <div class="col-5">
                             <label asp-for="PermaWard"></label>
-                            <input type="text" asp-for="PermaWard" class="form-control">
+                            <input type="text" asp-for="PermaWard" class="form-control ward " id="ward">
                             <span class="text-danger" asp-validation-for="PermaWard"> </span>
                         </div>
                         <div class="col-5">
                             <label asp-for="PermaStreet"></label>
-                            <input type="text" asp-for="PermaStreet" class="form-control">
+                            <input type="text" asp-for="PermaStreet" class="form-control street " id="street">
                             <span class="text-danger" asp-validation-for="PermaStreet"> </span>
                         </div>
                         <div class="col-8 mt-2">
-                            <input type="checkbox" />
-                            <label>Use as Temporary Address</label>
+                            <input type="checkbox" class="checkbox" id="checkbox" />
+                            <label for="checkbox" >Use as Temporary Address</label>
                         </div>
                     </div>
                 </div>
@@ -63,35 +66,38 @@
                     <div class="row">
                         <div class="col-5">
                             <label asp-for="TempState"></label>
-                            <input type="text" asp-for="TempState" class="form-control">
-                            <span class="text-danger" asp-validation-for="TempState"> </span>
+                            @Html.DropDownListFor(model => model.TempState, ViewBag.StateList as SelectList, "<-- Select State -->", new { @class = "form-control state", @id="tstate"})
+                            @* <input type="text" asp-for="TempState" class="form-control" id="tstate">
+                            <span class="text-danger" asp-validation-for="TempState"> </span> *@
                         </div>
                         <div class="col-5">
                             <label asp-for="TempDistrict"></label>
-                            <input type="text" asp-for="TempDistrict" class="form-control">
-                            <span class="text-danger" asp-validation-for="TempDistrict"> </span>
+                            @Html.DropDownListFor(model => model.TempDistrict, ViewBag.DistrictList as SelectList, "<-- Select District -->", new { @class = "form-control district", @id= "tdistrict"}  )
+
+                            @* <input type="text" asp-for="TempDistrict" class="form-control" id="tdistrict">
+                            <span class="text-danger" asp-validation-for="TempDistrict"> </span> *@
                         </div>
                         <div class="col-5">
                             <label asp-for="TempMunicipality"></label>
-                            <input type="text" asp-for="TempMunicipality" class="form-control">
+                            <input type="text" asp-for="TempMunicipality" class="form-control tempmun" id="tmunicipality">
                             <span class="text-danger" asp-validation-for="TempMunicipality"> </span>
                         </div>
                         <div class="col-5">
                             <label asp-for="TempWard"></label>
-                            <input type="text" asp-for="TempWard" class="form-control">
+                            <input type="text" asp-for="TempWard" class="form-control tempwar" id="tward">
                             <span class="text-danger" asp-validation-for="TempWard"> </span>
                         </div>
                         <div class="col-5">
                             <label asp-for="TempStreet"></label>
-                            <input type="text" asp-for="TempStreet" class="form-control">
+                            <input type="text" asp-for="TempStreet" class="form-control tempstr" id="tstreet">
                             <span class="text-danger" asp-validation-for="TempStreet"> </span>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <label asp-for="ProfileImage">Upload Profile Picture: </label>
-                    <input asp-for="ProfileImage" />
-                    <span asp-validation-for="ProfileImage"></span>
+                <div class="mt-3">
+                    <label asp-for="ProfileImages">Upload Profile Picture: </label>
+                    <input asp-for="ProfileImages" />
+                    <span asp-validation-for="ProfileImages"></span>
                 </div>
 
                 <input type="submit" class="form-control btn btn-success mt-3" value="Save" />
@@ -101,32 +107,106 @@
 </div>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/js/CascadingDDL.js"></script>
-
+ 
 <script>
     $(document).ready(function () {
 
-        $(".state").change(function () {
-            debugger;
-            var stateid = $(this).val();
-            ajax({
-                url: '/KycForm/GetDistricts?StateId=' + stateid,
-                success: function (response) {
-                    debugger;
-                    if (response == 200) { 
-                        $(".district").html('');
-                        var html = "";
-                        $('#district').append('<option>--Select District--</option>');
-                        $.each(response, function (i, data) {
-                           html+='<option value=' + data.id + '>' + data.name + '</option>';
-                        }); 
-                        $(".district").append(html);
+        // $(".state").change(function () {
+        //     debugger;
+        //     var stateid = $(this).val();
+        //     ajax({
+        //         url: '/kycform/getdistricts?stateid=' + stateid,
+        //         success: function (response) {
+        //             debugger;
+        //             if (response == 200) { 
+        //                 $(".district").html('');
+        //                 var html = "";
+        //                 $('#district').append('<option>--select district--</option>');
+        //                 $.each(response, function (i, data) {
+        //                    html+='<option value=' + data.id + '>' + data.name + '</option>';
+        //                 }); 
+        //                 $(".district").append(html);
+        //         },
+        //         error: function (error) {
+        //             alert(error);
+        //         }
+        //     })
+        // });
+
+
+
+
+
+        $("select.state").change(function () {
+            var Id = $(this).val();
+            $.ajax({
+                type: "Get",
+                url: "/KycForm/GetDistricts",
+                dataType: "json",
+                data: { Id: Id },
+                success: function (data) {
+                    $("select.district").html("");
+                    //$("select[name='District']").html("");
+                    var options = "<option value=''>Select District </option>";
+                    $.each(data, function (index, item) {
+                        options += '<option value="' + item.districtId + '">' + item.name + "</option>";
+                    });
+                    $("select.district").html(options).selectpicker("refresh");
                 },
-                error: function (error) {
-                    alert(error);
-                }
-            })
+            });
         });
+
+
+
+
+
+        // var mun = $(".municipality").val();
+        // var war = $(".ward").val();
+        // var str = $(".street").val();
+
+        // debugger;
+
+        // $('.checkbox').change(function () {
+        //     if ($(this).is(':checked')) {
+        //         debugger;
+        //         $(".tempmun").val(mun);
+        //         $(".tempwar").val(war);
+        //         $(".tempstr").val(str);
+        //     }
+        // }
+
+
+
+        $('#checkbox').change(function () {
+            if ($(this).is(':checked')) {
+
+                var permanentStateValue = $('#state').val();
+                var permanentDistrictValue = $('#district').val();
+
+                $('#tstate').val(permanentStateValue);
+                $('#tdistrict').val(permanentDistrictValue);
+
+
+                $('#tmunicipality').val($('#municipality').val());
+                $('#tward').val($('#ward').val());
+                $('#tstreet').val($('#street').val());
+
+            } else {
+                $('#tstate').val('');
+                $('#tdistrict').val('');
+
+                $('#tmunicipality').val('');
+                $('#tward').val('');
+                $('#tstreet').val('');
+                $('#tdistrict').val('');
+            }
+        });
+
+
+
+
+
+    });
 
 </script>
 

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyNotes.Models
 {
@@ -30,6 +32,17 @@ namespace MyNotes.Models
         [Display(Name = "Street")]
         public string? TempStreet { get; set; }
         public string? ProfileImage { get; set;}
+        [NotMapped]
+        public IFormFile? ProfileImages { get; set; }
+
+
+        public int StateId { get; set; }
+        public int DistrictId { get; set; }
+
+        [NotMapped]
+        public string? PState { get; set; }
+        [NotMapped]
+        public string? PDistrict { get; set; }
 
 
 

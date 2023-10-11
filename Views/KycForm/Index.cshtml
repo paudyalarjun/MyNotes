@@ -1,15 +1,50 @@
-﻿@model IEnumerable<KycForm >
+﻿@model IEnumerable<KycForm>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div d-flex">
+    <div class="col-2"><a asp-action="create" class="btn btn-success form-control">New Form</a></div>
+    <hr>
+    <div class="col-10"><h1 class="mt-2">Profiles</h1></div>
+</div>
+
+
+@* 
 <table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>State</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.ID</td>
+                <td>@task.FullName</td>
+                <td>@task.PState</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@task.ID">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@task.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+ *@
+
+
+
+
+
+<table class="table" id="myTable">
     <thead>
         <tr>
             <th>
@@ -60,67 +95,80 @@
     <tbody>
 
 
-<script>
-    var addSerialNumber = function () {
-    $('table tr').each(function(index) {
-    $(this).find('td:nth-child(1)').html(index+1);
-    });
-    };
-</script>
 
 
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
-            <td> <script>addSerialNumber();</script></td>
+            <td>
+                
+            </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.FullName)
+                @* @Html.DisplayFor(model => item.FullName) *@
+                <p>@item.FullName</p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                @Html.DisplayFor(model => item.PhoneNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PermaState)
+                @Html.DisplayFor(model => item.PState)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PermaDistrict)
+                @Html.DisplayFor(model => item.PDistrict)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PermaMunicipality)
+                @Html.DisplayFor(model => item.PermaMunicipality)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PermaWard)
+                @Html.DisplayFor(model => item.PermaWard)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PermaStreet)
+                @Html.DisplayFor(model => item.PermaStreet)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TempState)
+                @Html.DisplayFor(model => item.TempState)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TempDistrict)
+                @Html.DisplayFor(model => item.TempDistrict)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TempMunicipality)
+                @Html.DisplayFor(model => item.TempMunicipality)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TempWard)
+                @Html.DisplayFor(model => item.TempWard)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TempStreet)
+                @Html.DisplayFor(model => item.TempStreet)
             </td>
             <td>
                 <img src="~/Images/@item.ProfileImage" width="100" height="100">
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @* <a asp-action="Delete"  style=" padding: 3px; margin: 2px; border-radius: 30%;">Delete</a> *@
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+
+
+<script>
+    
+    $(document).ready(function () {
+        // Get the table rows excluding the header row
+        var rows = $("#myTable tbody tr");
+
+        // Loop through each row and set the serial number
+        rows.each(function (index) {
+            $(this).find("td:first").text(index + 1);
+        });
+    });
+
+</script>
 
 

@@ -5,7 +5,8 @@ namespace MyNotes.Models
 {
     public class State
     {
-        public int ID { get; set; }
-        public string? Sname { get; set; }
+        public int StateId { get; set; }
+        public string? Name { get; set; }
+        public int CountryId { get; set; }
     }
 }
