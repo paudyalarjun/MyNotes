@@ -69,13 +69,13 @@
                     <div class="row">
                         <div class="col-5">
                             <label asp-for="TempState"></label>
-                            @Html.DropDownListFor(model => model.TempState, ViewBag.StateList as SelectList, "<-- Select State -->", new { @class = "form-control state", @id="tstate"})
+                            @Html.DropDownListFor(model => model.TempState, ViewBag.StateList as SelectList, "<-- Select State -->", new { @class = "form-control tstate", @id="tstate"})
                             @* <input type="text" asp-for="TempState" class="form-control" id="tstate">
                             <span class="text-danger" asp-validation-for="TempState"> </span> *@
                         </div>
                         <div class="col-5">
                             <label asp-for="TempDistrict"></label>
-                            @Html.DropDownListFor(model => model.TempDistrict, ViewBag.DistrictList as SelectList, "<-- Select District -->", new { @class = "form-control district", @id= "tdistrict"}  )
+                            @Html.DropDownListFor(model => model.TempDistrict, ViewBag.DistrictList as SelectList, "<-- Select District -->", new { @class = "form-control tdistrict", @id= "tdistrict"}  )
 
                             @* <input type="text" asp-for="TempDistrict" class="form-control" id="tdistrict">
                             <span class="text-danger" asp-validation-for="TempDistrict"> </span> *@
@@ -164,6 +164,28 @@
         });
 
 
+        //For Temporary State and Districts
+        $("select.tstate").change(function () {
+            var Id = $(this).val();
+            $.ajax({
+                type: "Get",
+                url: "/KycForm/GetDistricts",
+                dataType: "json",
+                data: { Id: Id },
+                success: function (data) {
+                    $("select.tdistrict").html("");
+                    //$("select[name='District']").html("");
+                    var options = "<option value=''>Select District </option>";
+                    $.each(data, function (index, item) {
+                        options += '<option value="' + item.districtId + '">' + item.name + "</option>";
+                    });
+                    $("select.tdistrict").html(options).selectpicker("refresh");
+                },
+            });
+        });
+
+
+
 
 
 
@@ -207,6 +229,20 @@
                 $('#tstreet').val('');
                 $('#tdistrict').val('');
             }
+
+
+            if ($(this).is(':checked')) {
+                // Checkbox is checked, make the fields read-only
+                $('#tstate, #tdistrict').prop('disabled', true);
+                $('#tmunicipality, #tward, #tstreet').prop('readonly', true);
+
+            } else {
+                // Checkbox is unchecked, make the fields editable
+                $('#tstate, #tdistrict').prop('disabled', false);
+                $('#tmunicipality, #tward, #tstreet').prop('readonly', false);
+            }
+
+
         });
 
 

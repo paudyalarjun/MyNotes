@@ -85,8 +85,8 @@ namespace MyNotes.Controllers
                     PermaMunicipality = model.PermaMunicipality,
                     PermaWard = model.PermaWard,
                     PermaStreet = model.PermaStreet,
-                    TempState = model.TempState,
-                    TempDistrict = model.TempDistrict,
+                    TempState = model.TState,
+                    TempDistrict = model.TDistrict,
                     TempMunicipality = model.TempMunicipality,
                     TempWard = model.TempWard,
                     TempStreet = model.TempStreet,
@@ -104,6 +104,10 @@ namespace MyNotes.Controllers
         }
 
 
+
+
+
+
         public IActionResult Edit(int id)
         {
             var model = _context.KycForms.FirstOrDefault(x=>x.ID == id);
@@ -113,7 +117,6 @@ namespace MyNotes.Controllers
             return View(model);
 
         }
-
 
 
 
@@ -151,14 +154,6 @@ namespace MyNotes.Controllers
             ViewBag.DistrictList = new SelectList(_context.District, "DistrictId", "Name");
             return View(model);
         }
-
-
-
-
-
-
-
-
 
 
 

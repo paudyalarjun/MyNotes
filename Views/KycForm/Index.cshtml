@@ -127,10 +127,10 @@
                 @Html.DisplayFor(model => item.PermaStreet)
             </td>
             <td>
-                @Html.DisplayFor(model => item.TempState)
+                @Html.DisplayFor(model => item.TState, new{ @class="tstate" })
             </td>
             <td>
-                @Html.DisplayFor(model => item.TempDistrict)
+                @Html.DisplayFor(model => item.TDistrict)
             </td>
             <td>
                 @Html.DisplayFor(model => item.TempMunicipality)
@@ -158,17 +158,10 @@
 
 
 <script>
-    
     $(document).ready(function () {
-        // Get the table rows excluding the header row
-        var rows = $("#myTable tbody tr");
 
-        // Loop through each row and set the serial number
-        rows.each(function (index) {
-            $(this).find("td:first").text(index + 1);
-        });
+
+
     });
-
-</script>
 
 

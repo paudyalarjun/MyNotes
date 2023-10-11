@@ -47,6 +47,8 @@ namespace MyNotes.Services
                         viewModel.ProfileImage = Convert.ToString(reader.GetValue(13));
                         viewModel.PState = Convert.ToString(reader.GetValue(16));
                         viewModel.PDistrict = Convert.ToString(reader.GetValue(17));
+                        viewModel.TState = Convert.ToString(reader.GetValue(18));
+                        viewModel.TDistrict = Convert.ToString(reader.GetValue(19));
                         list.Add(viewModel);
                     }
                 }

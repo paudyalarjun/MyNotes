@@ -11,8 +11,10 @@ namespace MyNotes.Models
         public string? FullName { get; set; }
         [Display(Name = "Phone Number:")]
         public long PhoneNumber { get; set; }
+        [Required]
         [Display(Name = "State")]
         public string? PermaState { get; set; }
+        [Required]
         [Display(Name = "District")]
         public string? PermaDistrict { get; set; }
         [Display(Name = "Municipality")]
@@ -43,6 +45,10 @@ namespace MyNotes.Models
         public string? PState { get; set; }
         [NotMapped]
         public string? PDistrict { get; set; }
+        [NotMapped]
+        public string? TState { get; set; }
+        [NotMapped]
+        public string? TDistrict { get; set; }
 
 
 
