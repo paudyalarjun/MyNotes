@@ -1,0 +1,29 @@
+﻿@model MyNotes.ViewModels.ImageFormViewModel
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div>
+    <div>
+        <form asp-action="create" method="post" enctype="multipart/form-data" >
+            <div class="col-5">
+                <label asp-for="Name"></label>
+                <input type="text" asp-for="Name" class="form-control">
+                <span class="text-danger" asp-validation-for="Name"> </span>
+            </div>
+
+            <div class="mt-3">
+                <label asp-for="ImageIFile">Upload Profile Picture: </label>
+                <input asp-for="ImageIFile" />
+                <span asp-validation-for="ImageIFile"></span>
+            </div>
+
+            <input type="submit" class="form-control btn btn-success mt-3" value="Save" />
+
+        </form>
+
+    </div>
+</div>
+

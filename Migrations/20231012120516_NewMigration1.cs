@@ -5,7 +5,7 @@
 namespace MyNotes.Migrations
 {
     /// <inheritdoc />
-    public partial class Ouillll : Migration
+    public partial class NewMigration1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

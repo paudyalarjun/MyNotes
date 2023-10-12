@@ -22,7 +22,7 @@
                 </div>
                 <div class="mb-3">
                     <label asp-for="PhoneNumber"></label>
-                    <input type="text" asp-for="PhoneNumber" pattern="[0-9]{10}" class="form-control">
+                    <input type="text" asp-for="PhoneNumber" class="form-control">
                     <span class="text-danger" asp-validation-for="PhoneNumber"> </span>
                 </div>
                 <div>
@@ -104,7 +104,7 @@
                 </div>
                 
                 <div class="mt-3">
-                  <img src="~/Images/@Model.ProfileImage" />
+                  <img src="~/Images/@Model.ProfileImage" alt="" />
                 </div>
 
                 <input type="submit" class="form-control btn btn-success mt-3" value="Save" />

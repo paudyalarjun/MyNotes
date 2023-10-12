@@ -12,8 +12,8 @@ using MyNotes.Data;
 namespace MyNotes.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231009062109_Toit")]
-    partial class Toit
+    [Migration("20231012120116_NewMigration")]
+    partial class NewMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -197,6 +197,27 @@ namespace MyNotes.Migrations
                     b.ToTable("District");
                 });
 
+            modelBuilder.Entity("MyNotes.Models.ImageForm", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("ImageFile")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ImageForms");
+                });
+
             modelBuilder.Entity("MyNotes.Models.KycForm", b =>
                 {
                     b.Property<int>("ID")
@@ -211,14 +232,16 @@ namespace MyNotes.Migrations
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PermaDistrict")
-                        .HasColumnType("int");
+                    b.Property<string>("PermaDistrict")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PermaMunicipality")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PermaState")
-                        .HasColumnType("int");
+                    b.Property<string>("PermaState")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PermaStreet")
                         .HasColumnType("nvarchar(max)");

@@ -102,7 +102,7 @@ namespace MyNotes.Controllers
                     PermaMunicipality = model.PermaMunicipality,
                     PermaWard = model.PermaWard,
                     PermaStreet = model.PermaStreet,
-                    TempState = model.TState,
+                    TempState = model.TempState,
                     TempDistrict = model.TempDistrict,
                     TempMunicipality = model.TempMunicipality,
                     TempWard = model.TempWard,

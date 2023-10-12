@@ -17,6 +17,7 @@ public class ApplicationDbContext : IdentityDbContext<User>
     public DbSet<KycForm>? KycForms { get; set; }
     public DbSet<State>? State { get; set; }
     public DbSet<District>? District { get; set; }
+    public DbSet<ImageForm>? ImageForms { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)

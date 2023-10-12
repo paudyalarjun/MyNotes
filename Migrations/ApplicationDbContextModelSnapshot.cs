@@ -194,7 +194,7 @@ namespace MyNotes.Migrations
                     b.ToTable("District");
                 });
 
-            modelBuilder.Entity("MyNotes.Models.KycForm", b =>
+            modelBuilder.Entity("MyNotes.Models.ImageForm", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -202,8 +202,26 @@ namespace MyNotes.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<bool>("BoxChecked")
-                        .HasColumnType("bit");
+                    b.Property<string>("ImageFile")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ImageForms");
+                });
+
+            modelBuilder.Entity("MyNotes.Models.KycForm", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<int>("DistrictId")
                         .HasColumnType("int");

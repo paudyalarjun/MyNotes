@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ImageForm>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div d-flex">
+    <div class="col-2"><a asp-action="create" class="btn btn-success form-control">New Form</a></div>
+    <hr>
+    <div class="col-10"><h1 class="mt-2">Profiles</h1></div>
+</div>
+
+
+
+
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                S.N.
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageFile)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                <td>
+                    @Html.DisplayFor(model => item.Name)
+                </td>
+                <td>
+                    <img src="~/Images/@item.ImageFile" width="300" height="250" />
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+
+                    @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

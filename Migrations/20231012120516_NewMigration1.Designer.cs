@@ -12,8 +12,8 @@ using MyNotes.Data;
 namespace MyNotes.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231011065854_Basaisarai")]
-    partial class Basaisarai
+    [Migration("20231012120516_NewMigration1")]
+    partial class NewMigration1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -195,6 +195,27 @@ namespace MyNotes.Migrations
                     b.HasKey("DistrictId");
 
                     b.ToTable("District");
+                });
+
+            modelBuilder.Entity("MyNotes.Models.ImageForm", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("ImageFile")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ImageForms");
                 });
 
             modelBuilder.Entity("MyNotes.Models.KycForm", b =>
