@@ -127,6 +127,28 @@
 
 
 
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            // Find the table you want to order
+            var table = $('#myTable');
+
+            // Loop through the rows (skip the header row)
+            table.find('tbody tr').each(function (index) {
+                // Add 1 to index to start from 1 instead of 0
+                var serialNumber = index + 1;
+
+                // Find the first cell (td) and update its text
+                $(this).find('td:first').text(serialNumber);
+            });
+        });
+
+    </script>
+
+}
+
+
 
 
 

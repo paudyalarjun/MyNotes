@@ -22,19 +22,15 @@ namespace MyNotes.Controllers
         }
 
 
-
-
-
         public IActionResult Index()
          {
             ViewBag.StateList = new SelectList(_stateService.GetStateDistrictName());
-
             var kycforms = _stateService.GetStateDistrictName();
             //var kycform = _context.KycForms.ToList();
             return View(kycforms);
-        }
-
-
+        }	
+		
+		
 
 
         public JsonResult GetStates()
@@ -44,19 +40,12 @@ namespace MyNotes.Controllers
         }
 
 
-
         [Route("KycForm/GetDistricts")]
         public JsonResult GetDistricts( int id)
         {
-
             var districts = _context.District.Where(x => x.StateId == id ).OrderBy(x => x.Name).ToList();
             return new JsonResult(districts);
         }
-
-
-
-
-
 
 
 
@@ -68,31 +57,12 @@ namespace MyNotes.Controllers
         }
 
 
-
-
-//public IActionResult Create(KycFormViewModel model)
-//{
-//    string stringFileName = UploadFile(model);
-//    if (ModelState.IsValid)
-//    {
-//        _context.KycForms.Add(model);
-//        _context.SaveChanges();
-//        return RedirectToAction(nameof(Index), "KycForm");
-//    }
-
-//    ViewBag.StateList = new SelectList(_context.State, "StateId", "Name");
-//    ViewBag.DistrictList = new SelectList(_context.District, "DistrictId", "Name");
-//    return View(model);
-//}
-
-
         [HttpPost]
         public IActionResult Create(KycFormViewModel model)
         {
             string stringFileName = UploadFile(model);
             if (ModelState.IsValid)
             {
-
                 var kycform = new KycForm()
                 {
                     FullName = model.FullName,
@@ -108,19 +78,15 @@ namespace MyNotes.Controllers
                     TempWard = model.TempWard,
                     TempStreet = model.TempStreet,
                     ProfileImage = stringFileName,
-
                 };
                 _context.KycForms.Add(kycform);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index), "KycForm");
             }
-
             ViewBag.StateList = new SelectList(_context.State, "StateId", "Name");
             ViewBag.DistrictList = new SelectList(_context.District, "DistrictId", "Name");
             return View(model);
         }
-
-
 
 
 
@@ -128,13 +94,10 @@ namespace MyNotes.Controllers
         public IActionResult Edit(int id)
         {
             var model = _context.KycForms.FirstOrDefault(x=>x.ID == id);
-
             ViewBag.StateList = new SelectList(_context.State, "StateId", "Name");
             ViewBag.DistrictList = new SelectList(_context.District, "DistrictId", "Name");
             return View(model);
-
         }
-
 
 
         [HttpPost]
@@ -162,7 +125,6 @@ namespace MyNotes.Controllers
                     ProfileImage = stringFileName,
 
                 };
-
                 _context.KycForms.Update(kycform);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index), "KycForm");

@@ -66,12 +66,15 @@
                     <div class="row">
                         <div class="col-5">
                             <label asp-for="TempState"></label>
+
                             @Html.DropDownListFor(model => model.TempState, ViewBag.StateList as SelectList, "<-- Select State -->", new { @class = "form-control tstate", @id="tstate"})
                             @* <input type="text" asp-for="TempState" class="form-control" id="tstate">
                             <span class="text-danger" asp-validation-for="TempState"> </span> *@
                         </div>
                         <div class="col-5">
                             <label asp-for="TempDistrict"></label>
+                            @* <input type="hidden" name="selectedValue" id="selectedValue" asp-for="TempDistrict" value=""> *@
+
                             @Html.DropDownListFor(model => model.TempDistrict, ViewBag.DistrictList as SelectList, "<-- Select District -->", new { @class = "form-control tdistrict", @id= "tdistrict"}  )
 
                             @* <input type="text" asp-for="TempDistrict" class="form-control" id="tdistrict">
@@ -106,7 +109,10 @@
     </div>
 </div>
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@* <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
  
 <script>
     $(document).ready(function () {
@@ -181,8 +187,6 @@
 
 
 
-
-
         //To fill up temporary form after clicking checkbox
         $('#checkbox').change(function () {
             if ($(this).is(':checked')) {
@@ -213,17 +217,18 @@
             //To make Temporary field readonly after clicking checkbox
             if ($(this).is(':checked')) {
                 // Checkbox is checked, make the fields read-only
-                $('#tstate, #tdistrict').attr('readonly', true);
+                $('#tstate').attr('readonly', true);
+                $('#tdistrict').attr('readonly', true);
                 $('#tmunicipality, #tward, #tstreet').attr('readonly', true);
             
             } else {
                 // Checkbox is unchecked, make the fields editable
-                $('#tstate, #tdistrict').attr('readonly', false);
+                $('#tstate').attr('readonly', false);
+                $('#tdistrict').attr('readonly', false);
                 $('#tmunicipality, #tward, #tstreet').attr('readonly', false);
             }
 
         });
-
 
 
     });

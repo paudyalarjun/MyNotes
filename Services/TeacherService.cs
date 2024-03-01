@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using MyNotes.Controllers;
 using MyNotes.Models;
 using MyNotes.ViewModels;
 using System.Data;
@@ -17,6 +18,11 @@ namespace MyNotes.Services
         }
 
 
+
+
+
+
+        // To get State and District Names
 
         public List<KycFormViewModel> GetStateDistrictName()
         {
@@ -65,7 +71,7 @@ namespace MyNotes.Services
 
 
 
-
+        // Get Department Name and Teacher Name
 
         public List<TeacherDepartmentViewModel> GetTeacherDepartmentFile()
         {
@@ -153,7 +159,6 @@ namespace MyNotes.Services
                     }
                 }
                 command.Dispose();
-
             }
             return list;
 
